@@ -1,0 +1,14 @@
+<% layout("/layout/boilerplate") %>
+<body>
+    <% for(student of allstudent){%>
+        <p><b>id:<%= student._id %></b></p>
+
+        <p>name:<%= student.name %></p>
+
+        <p>class:<%= student.class %></p>
+        <form action="/students/<%= student._id%>">
+            <button>show</button>
+        </form>
+        <hr>
+   <% } %>
+</body>

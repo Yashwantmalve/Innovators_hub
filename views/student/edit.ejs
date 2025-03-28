@@ -1,0 +1,9 @@
+<% layout("/layout/boilerplate") %>
+<body>
+    <form method="post" action="/students/<%= Student._id %>?_method=PUT">
+        <input type="text" value="<%= Student.name  %>" name="name">
+        <br>
+        <input type="text" value="<%= Student.class %>"><br>
+        <button>edit</button>
+    </form>
+</body>

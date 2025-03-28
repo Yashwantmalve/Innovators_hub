@@ -1,0 +1,32 @@
+/* nav */
+
+nav{
+    background-color: rgb(110, 174, 213);
+}
+
+.fa-graduation-cap{
+    font-size: 2rem;
+}
+
+
+/* footer */
+
+footer{
+    color: aliceblue;
+    background-color: rgb(67, 69, 71);
+    height: 5rem;
+}
+
+.f-info {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* card */
+
+.card{
+    margin-top: 10%;
+    margin-bottom:10%;
+}
