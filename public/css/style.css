@@ -27,6 +27,11 @@ footer{
 /* card */
 
 .card{
-    margin-top: 10%;
-    margin-bottom:10%;
+    margin-top: 14%;
+    margin-bottom:14%;
+}
+
+
+.s-button{
+    display: flex;
 }

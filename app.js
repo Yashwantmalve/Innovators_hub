@@ -26,6 +26,9 @@ app.use(session({
 }))
 
 
+app.use(passport.initialize());
+app.use((passport.session()));
+passport.use(new LocalStatergy(teacher.authenticate()))
 
 
 passport.serializeUser(teacher.serializeUser());
@@ -74,12 +77,20 @@ app.get("/students",async (req,res)=>{
 
 //create student
 app.get("/students/new",(req, res) => {
+    if(!req.isAuthenticated()){
+        res.redirect("/login")
+    }
+
     res.render("student/create");
 })
 
 app.post("/students/new",async(req,res)=>{
+
+    console.log(req.user);
+
    let studentData = req.body;
    let newStudent = await student.insertOne(studentData);
+
    res.redirect("/students")
 })
 
@@ -142,11 +153,26 @@ app.post("/signup",async(req,res)=>{
 app.get("/login",(req,res)=>{
     res.render("teacher/login")
 })
+
+
 app.post("/login",passport.authenticate("local",{failureRedirect:"/login"}),async(req,res)=>{
      res.redirect("/students");
 })
 
+app.get("/logout",(req,res)=>{
+    req.logOut((err)=>{
+        if(err){
+           res.redirect("/signup")
+        }
+        res.redirect("/students");
+    })
+})
 
+
+app.use((err,req,res,next)=>{
+     res.send(err);
+     next(err)
+})
 
 
 
